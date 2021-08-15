@@ -55,6 +55,7 @@ number of bots you have). Copy the definition if you have more bots. Keep in min
 
 The absolute paths to the SQLite database is configured in `.env`.
 
-You can just register your own user which has immediate access to the monitor.
+In the frontend you can just register your own user which has immediate access to the monitor.
 There is also a default user registered. Therefore you should also restrict the access 
 to the hosted site via HTTP Auth, as anybody can currently register and access the data.
+(Still alpha/MVP, should be enhanced in the future 😁).
