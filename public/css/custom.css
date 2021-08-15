@@ -1,0 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.rowHover {
+    cursor: pointer;
+}
+
+.hodl-coin {
+    color: #FFD700;
+}
