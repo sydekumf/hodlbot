@@ -7,6 +7,8 @@ Status: Alpha (use at your own risk, data can be inaccurate)
 **Everybody is welcomed to enhance this monitor.
 Share and discuss your ideas in the [issue section](https://github.com/sydekumf/hodlbot/issues).**
 
+![Hodlbot](hodlbot.jpg)
+
 ### Setup
 You should run this on a web server with PHP 7.4 and MySQL 8.0.
 
