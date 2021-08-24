@@ -26,6 +26,10 @@ class UpdateBalanceSnapshotCommand extends Command
      */
     private BalanceSnapshotService $balanceSnapshotService;
 
+    /**
+     * UpdateBalanceSnapshotCommand constructor.
+     * @param BalanceSnapshotService $balanceSnapshotService
+     */
     public function __construct(
         BalanceSnapshotService $balanceSnapshotService
     ) {

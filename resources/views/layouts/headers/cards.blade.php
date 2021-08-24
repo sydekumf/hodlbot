@@ -8,8 +8,26 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Daily PNL</h5>
+                                    <h5 class="card-title text-uppercase text-muted mb-0">1 Day PNL</h5>
                                     <span class="h2 font-weight-bold mb-0"><?php if ($cards['dailyPnl'] >= 0): ?>+<?php endif; ?><?php echo App\Service\LocaleService::reformat(App\Service\LocaleService::currency($cards['dailyPnl'])) ?> €</span>
+                                    <p class="mt-3 mb-0 text-muted text-sm">
+                                        <?php if ($cards['dailyGain'] >= 0): ?>
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php echo App\Service\LocaleService::reformat($cards['dailyGain']) ?> %</span>
+                                        <?php else: ?>
+                                        <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> <?php echo App\Service\LocaleService::reformat($cards['dailyGain']) ?> %</span>
+                                        <?php endif; ?>
+                                    </p>
+                                </div>
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">7 Day PNL</h5>
+                                    <span class="h2 font-weight-bold mb-0"><?php if ($cards['weeklyPnl'] >= 0): ?>+<?php endif; ?><?php echo App\Service\LocaleService::reformat(App\Service\LocaleService::currency($cards['weeklyPnl'])) ?> €</span>
+                                    <p class="mt-3 mb-0 text-muted text-sm">
+                                        <?php if ($cards['weeklyGain'] >= 0): ?>
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php echo App\Service\LocaleService::reformat($cards['weeklyGain']) ?> %</span>
+                                        <?php else: ?>
+                                        <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> <?php echo App\Service\LocaleService::reformat($cards['weeklyGain']) ?> %</span>
+                                        <?php endif; ?>
+                                    </p>
                                 </div>
                                 <div class="col-auto">
                                     <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -17,37 +35,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                                <?php if ($cards['dailyGain'] >= 0): ?>
-                                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php echo App\Service\LocaleService::reformat($cards['dailyGain']) ?> %</span>
-                                <?php else: ?>
-                                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> <?php echo App\Service\LocaleService::reformat($cards['dailyGain']) ?> %</span>
-                                <?php endif; ?>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6">
-                    <div class="card card-stats mb-4 mb-xl-0">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col">
-                                    <h5 class="card-title text-uppercase text-muted mb-0">Weekly PNL</h5>
-                                    <span class="h2 font-weight-bold mb-0"><?php if ($cards['weeklyPnl'] >= 0): ?>+<?php endif; ?><?php echo App\Service\LocaleService::reformat(App\Service\LocaleService::currency($cards['weeklyPnl'])) ?> €</span>
-                                </div>
-                                <div class="col-auto">
-                                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                        <i class="fas fa-chart-pie"></i>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="mt-3 mb-0 text-muted text-sm">
-                                <?php if ($cards['weeklyGain'] >= 0): ?>
-                                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php echo App\Service\LocaleService::reformat($cards['weeklyGain']) ?> %</span>
-                                <?php else: ?>
-                                    <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> <?php echo App\Service\LocaleService::reformat($cards['weeklyGain']) ?> %</span>
-                                <?php endif; ?>
-                            </p>
                         </div>
                     </div>
                 </div>
@@ -91,6 +78,30 @@
                                     <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php echo App\Service\LocaleService::reformat($cards['overallPerformanceGain']) ?> %</span>
                                 <?php else: ?>
                                     <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> <?php echo App\Service\LocaleService::reformat($cards['overallPerformanceGain']) ?> %</span>
+                                <?php endif; ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6">
+                    <div class="card card-stats mb-4 mb-xl-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <h5 class="card-title text-uppercase text-muted mb-0">All Time High</h5>
+                                    <span class="h2 font-weight-bold mb-0"><?php if ($cards['ath'] >= 0): ?>+<?php endif; ?><?php echo App\Service\LocaleService::reformat(App\Service\LocaleService::currency($cards['ath'])) ?> €</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                        <i class="fas fa-chart-pie"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-0 text-muted text-sm">
+                                <?php if ($cards['athGain'] >= 0): ?>
+                                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php echo App\Service\LocaleService::reformat($cards['athGain']) ?> %</span>
+                                <?php else: ?>
+                                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> <?php echo App\Service\LocaleService::reformat($cards['athGain']) ?> %</span>
                                 <?php endif; ?>
                             </p>
                         </div>

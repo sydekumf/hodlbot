@@ -2,10 +2,26 @@
 
 namespace App\Service\Forecast;
 
+use App\Service\Ath\GetAthService;
 use Illuminate\Support\Facades\DB;
 
 class GetBotBalancesDataService
 {
+    /**
+     * @var GetAthService
+     */
+    private GetAthService $getAthService;
+
+    /**
+     * GetBotBalancesDataService constructor.
+     * @param GetAthService $getAthService
+     */
+    public function __construct(
+        GetAthService $getAthService
+    ){
+        $this->getAthService = $getAthService;
+    }
+
     /**
      * @param array $botConfig
      * @return array
@@ -37,7 +53,7 @@ class GetBotBalancesDataService
             'current_balance' => $currentBalance,
             'total_gain' => ($currentBalance - $startBalance) / $startBalance,
             'average_daily_gain' => $averageDailyGain,
-            'ath' => 0
+            'ath' => $this->getAthService->execute($botConfig)
         ];
 
         return $data;
