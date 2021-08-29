@@ -21,6 +21,10 @@ class GetAthService
             ->get()
             ->first();
 
+        if (is_null($coinBalance)){
+            return 0;
+        }
+
         $athPrice = DB::table('ath')
             ->select('ath_price_usd')
             ->where('coin', '=', $coinBalance->alt_coin_id)

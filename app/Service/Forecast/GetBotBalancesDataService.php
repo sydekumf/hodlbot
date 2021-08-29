@@ -36,9 +36,22 @@ class GetBotBalancesDataService
             ->get()
             ->toArray();
 
+        $startBalance = $botConfig['start_balance'];
+
+        if (count($balances) == 0) {
+            return [
+                'name' => $botConfig['name'],
+                'start_balance' => $startBalance,
+                'total_increase' => 0,
+                'current_balance' => $startBalance,
+                'total_gain' => 0,
+                'average_daily_gain' => 0,
+                'ath' => $this->getAthService->execute($botConfig)
+            ];
+        }
+
         $currentBalanceData = end($balances);
         $currentBalance = $currentBalanceData->usd_value;
-        $startBalance = $botConfig['start_balance'];
 
         $averageDailyGain = 0;
         foreach ($balances as $balance) {

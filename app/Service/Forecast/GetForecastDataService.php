@@ -20,6 +20,14 @@ class GetForecastDataService
             ->get()
             ->toArray();
 
+        $data = [];
+        if (count($balances) == 0) {
+            foreach (config('bot.forecast') as $target) {
+                $data[$target] = 'n.A.';
+            }
+            return $data;
+        }
+
         $averageDailyGain = 0;
         foreach ($balances as $balance) {
             $averageDailyGain += $balance->daily_gain;
@@ -27,7 +35,6 @@ class GetForecastDataService
         $averageDailyGain = $averageDailyGain / count($balances) / 100;
         $currentValue = $balance->usd_value;
 
-        $data = [];
         foreach (config('bot.forecast') as $target) {
             $days = log($target / $currentValue) / log(1 + $averageDailyGain);
             if ($days < 0) {
