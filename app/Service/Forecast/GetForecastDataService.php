@@ -36,6 +36,10 @@ class GetForecastDataService
         $currentValue = $balance->usd_value;
 
         foreach (config('bot.forecast') as $target) {
+            if ($averageDailyGain == 0) {
+                $data[$target] = 'n.A.';
+                continue;
+            }
             $days = log($target / $currentValue) / log(1 + $averageDailyGain);
             if ($days < 0) {
                 $data[$target] = 'n.A.';
